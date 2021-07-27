@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<!--<nav th:replace="layouts :: navbar"></nav>-->
+<div class="container">
+	Welcome <p th:text= ${name} /> !! <a href="/mydiary-api-client/task-client/list-tasks/{name}" th:href="@{/mydiary-api-client/task-client/list-tasks/__${name}__}">Click here</a> to manage your tasks in your diary.
+			
+<!--			
+				<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Task</th>
+						<th>Description</th>
+					</tr>
+				</thead>		
+				<tbody>
+					<tr th:each="aTask : ${tasks}">
+						<td th:text="${aTask.task}"/>
+						<td th:text="${aTask.description}"/>
+					</tr>
+				</tbody>
+			
+			</table>-->		
+</div>
+	
+</body>
+
+</html>

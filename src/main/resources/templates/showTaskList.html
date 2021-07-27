@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<!--<nav th:replace="layouts :: navbar"></nav>-->
+<div class="container">
+	Hello <p th:text= ${username} />!! 
+	<p>Here are your existing tasks:</p>
+			
+			
+				<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Task</th>
+						<th>Description</th>
+						<th>Started?</th>
+						<th>Target Date</th>
+						<th/>
+					</tr>
+				</thead>		
+				<tbody>
+					<tr th:each="aTask : ${taskList}">
+						<td th:text="${aTask.task}"/>
+						<td th:text="${aTask.description}"/>
+						<td th:text="${aTask.isStarted}"/>
+						<td th:text="${#dates.format(aTask.targetDate, 'dd/MM/yyyy')}" />
+						<td><a href="/mydiary-api-client/task-client/update-task/${aTask.id}" 
+						th:href="@{/mydiary-api-client/task-client/update-task/__${aTask.id}__}"
+						class="btn btn-success">Update</a> <a
+						href="/mydiary-api-client/task-client/delete-task/${aTask.id}" 
+						th:href="@{/mydiary-api-client/task-client/delete-task/__${aTask.id}__}"
+						class="btn btn-danger">Delete</a>
+					</td>
+					</tr>
+					<tr>
+					<td colspan="5" align="right">
+					<a href="/mydiary-api-client/task-client/create-new-task" 
+						th:href="@{/mydiary-api-client/task-client/create-new-task}"
+						class="btn btn-success">Create New Task</a>
+					</td></tr>
+				</tbody>
+			
+			</table>
+</div>
+	
+</body>
+
+</html>
